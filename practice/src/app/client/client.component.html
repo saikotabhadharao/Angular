@@ -1,0 +1,15 @@
+<p>client works!</p>
+<table>
+    <tr>
+        <th>Clientid</th>
+        <th>firstName</th>
+        <th>LastName</th>
+    </tr>
+    <tr *ngFor="let client of clientDetails">
+        <td>{{client.clientId}}</td>
+        <td>{{client.firstname}}</td>
+        <td>{{client.lastname}}</td>
+        <td><a [routerLink]="['/loans',client.clientId,'firstname',client.firstname]">loans</a></td>
+    </tr>
+</table>
+

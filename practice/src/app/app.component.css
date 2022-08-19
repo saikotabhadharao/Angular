@@ -1,0 +1,24 @@
+h1{
+    text-align: center;
+    background-color: gray;
+    color:aqua;
+}
+.c1{
+    background-color: bisque;
+    font-size:medium;
+    color:darkblue;
+}
+.c2{
+    background-color: coral;
+    font-size: large;
+}
+.c3{
+    background-color:springgreen;
+}
+.a1{
+    background-color: red;
+    font-size: 20px;
+}
+.a2{
+    background-color:aqua;
+}

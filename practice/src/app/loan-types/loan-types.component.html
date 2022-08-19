@@ -1,0 +1,36 @@
+<p>loan-types works!</p>
+<form [formGroup]="addLoanTypesForm" >
+    <div class="form-group">
+        <label>LoanType:</label>
+        <input type="text" formControlName="loanType">
+        <div class="text-danger" *ngIf="addLoanTypesForm.get('loanType').hasError('required') && addLoanTypesForm.get('loanType').touched">this field is required</div>
+       
+    </div>
+    <div class="form-group">
+        <label>LoanDescription:</label>
+        <textarea formControlName="loanDescription"></textarea>
+        <div  class='text-danger'*ngIf="addLoanTypesForm.get('loanDescription').hasError('required')&& addLoanTypesForm.get('loanDescription').touched">this field is required</div>
+        <div class="text-danger" *ngIf="addLoanTypesForm.get('loanDescription').hasError('minlength') && addLoanTypesForm.get('loanDescription').touched">minimum length is required</div>
+        <!--Open tsconfig.json and add "strictNullChecks": false to angularCompilerOptions other wise it shows Error: src/app/admin/admin.component.html:9:80 - error TS2531: Object is possibly 'null'. -->
+    </div>
+    <div class="form-group">
+        <label>selection:</label>
+        <select formControlName="selection">
+            <option value="sai">sai</option>
+            <option value="kota">kota</option>
+        </select>
+    </div>
+    
+    <div class="form-group" formArrayName="users">
+        <label>Users</label>
+        <div *ngFor="let control of addLoanTypesForm.controls.users['controls']; let i=index">
+            <input type="text" [formControlName]="i">
+        </div>
+    </div>
+    
+    
+    
+    
+    <button (click)="addLoan()"  [disabled]="!addLoanTypesForm.valid">submit</button>
+    <button (click)="resetForm()">Reset</button>
+</form>

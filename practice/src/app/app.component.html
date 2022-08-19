@@ -1,0 +1,200 @@
+<h1>hello world</h1>
+<h2 *ngIf="msg;else error_msg">
+  updated successfully
+</h2>
+<ng-template #error_msg>
+  <h2>data is not updated</h2>
+</ng-template>
+
+<!--ngIf then else-->
+<h2 *ngIf="new_msg then new else old"></h2>
+
+<ng-template #new>
+  <h2>new data is updated</h2>
+</ng-template>
+
+<ng-template #old>
+  <h2>old data is updated</h2>
+</ng-template>
+
+<!--ngFor-->
+<div *ngFor="let details of data; even as e; odd as o;index as i;">
+  <div *ngIf="e" style="background-color: green;">
+  <ul>
+    <li><b>{{i+1}}=></b> {{details.firstname}} {{details.lastname}},  {{details.gender}},{{details.age}}</li>
+  </ul>
+  </div>
+  <div *ngIf="o" style="background-color: yellow;">
+    <ul>
+      <li><b>{{i+1}}=></b>  {{details.firstname}} {{details.lastname}},  {{details.gender}},{{details.age}}</li>
+    </ul>
+    </div>
+</div>
+
+
+
+
+<!--ngSwitch for strings-->
+
+<div [ngSwitch]="switch_msg">
+  <div *ngSwitchCase="'sai'">This is me</div>
+  <div *ngSwitchCase="'mavullingam'">this is my dad</div>
+  <div *ngSwitchCase="'peddintlamma'">this is my mom</div>
+  <div *ngSwitchCase="'Nagendra'">this is my brother</div>
+  <div *ngSwitchDefault>other than any one belongs to my family relation</div>
+</div>
+
+<!--ngSwitch for numeric-->
+
+<div [ngSwitch]="age">
+  <div *ngSwitchCase="21">This is sai</div>
+  <div *ngSwitchCase="47">this is my father mavullingam</div>
+  <div *ngSwitchCase="44">this is my mother peddintlamma</div>
+  <div *ngSwitchCase="23">this is my brother Nagendra</div>
+  <div *ngSwitchDefault>other than any one belongs to my family relation</div>
+</div>
+
+
+<!--ngStyle normal-->
+
+<div [ngStyle]="{'background-color':'gray','text-align':'center'}">ng style in noral case</div>
+
+<!--ngStyle dynamically-->
+
+<div [ngStyle]="{'background-color':color_name}">ng style in dnamic case</div>
+
+<!--ngStyle with condition-->
+
+<div [ngStyle]="{'background-color':value==1?'blue':'green'}">ng style based on condition</div>
+
+
+
+<!--ngClass string Type-->
+<div [ngClass]="'c1'">ngClss string type</div>
+
+<!--ngClass dynamic type-->
+<div [ngClass]=class_property>ngClass with dynamic type</div>
+
+<!--ngClass multiple classes-->
+<div [ngClass]="'c1 c2'">ngClass with multiple classes</div>
+
+<!--ngClass Condition-->
+<div [ngClass]="class_value=='c1'?'c1':'c2'">ngClass with Condition</div>
+
+<!--ngClass method-->
+<div [ngClass]=getClass()>ngClass with method type</div>
+
+<!--ngClass Objective type-->
+<div [ngClass]="{c1:true,c2:false}">ngClass with objective Type</div>
+
+<!--one way binding-->
+<a href="" (click)="doOperation()">click here</a>
+
+
+<!--interpolation this represenatation like {{}}-->
+<h1>{{myname}}</h1>
+
+
+<div *ngFor="let details of data">
+  
+  <div [ngSwitch]="details.lastname">
+    <div *ngSwitchCase="'kotasai'" >{{details.firstname}}{{details.lastname}}</div>
+    <div *ngSwitchCase="'Nagendra'">{{details.firstname}}{{details.lastname}}</div>
+    <div *ngSwitchCase="'Mavullingam'">{{details.firstname}}{{details.lastname}}</div>
+    <div *ngSwitchCase="'peddintlamm'">{{details.firstname}}{{details.lastname}}</div>
+  </div>
+  
+</div>
+
+<!--property Binding-->
+
+<h1 [title]="myname">{{myname}}</h1>
+<h2 [style.color]="'green'">{{myname}}</h2>
+<h2 [innerHTML]="myname"></h2>
+
+
+
+<!--eventBinding-->
+<button (click)="execute()">click here to Execute</button>
+<div (mouseenter)="highlight()">mouseenter statement</div>
+<div (mouseleave)="newhighlight()">mouseleave statement</div>
+<input type="text"(focus)="focus()">
+
+___________________________________________________________________________________________________________________________________________________________________________
+
+<div [ngStyle]="{'background-color':'red'}">this is normal condition</div>
+<div [ngStyle]="{'background-color':variable}">this is dynamically assigning </div>
+<div [ngStyle]="{'color':variable=='gray'?'gray' : 'Red'}">Ternary condition</div>
+
+
+
+<div [ngClass]="'a1'">normal class condition</div>
+<div [ngClass]="'a1 a2'">Multiple classes</div>
+<div [ngClass]="variableclass">Dynamic class</div>
+<div [ngClass]="variableclass=='a1' ? 'c1' : 'c2'">ternary condition</div>
+
+<div [style.text-align]="Data">this is my name</div>
+
+<input [(ngModel)]="Username"/>
+<div>{{Username}}</div>
+<div *ngIf="month > 10">{{Username}}</div>
+___________________________________________________________________________________________________________________________________________________________________________
+
+<!--Pipes(|)-->
+<!--Built in Pipes-->
+<!--lowercase-->
+
+<div>{{LowerCaseExample | lowercase}}</div>
+
+<!--Uppercase-->
+<div [style.background-color]="'yellow'">{{UpperCaseExample | uppercase}}</div>
+
+<!--Currency-->
+<div>{{CurrencyExample | currency}}</div>
+
+<!--Percentage-->
+<div>{{PercentageExample | percent}}</div>
+
+<!--Date-->
+<div>{{DateExample | date}}</div>
+
+<!--Json-->
+<div>{{JsonExample | json}}</div>
+
+<div>{{JsonExample.firstname | uppercase}}</div>
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<!--Parameterized pipes-->
+
+<!--Date-->
+<div>{{DateExample | date : 'full' }}</div>
+<div>{{DateExample | date : 'long' }}</div>
+<div>{{DateExample | date : 'short'}}</div>
+<div>{{DateExample | date :'medium'}}</div>
+
+<div>{{DateExample | date : 'shortDate'}}</div>
+<div>{{DateExample | date : 'mediumDate'}}</div>
+<div>{{DateExample | date :'longDate'}}</div>
+<div>{{DateExample | date : 'fullDate'}}</div>
+
+<div>{{DateExample | date :'shortTime'}}</div>
+<div>{{DateExample | date :'mediumTime'}}</div>
+<div>{{DateExample | date :'longTime'}}</div>
+<div>{{DateExample | date :'fullTime'}}</div>
+
+<!--Currency-->
+<div>{{CurrencyExample | currency}}</div>
+<div>{{CurrencyExample | currency : 'INR'}}</div>
+<div>{{CurrencyExample | currency : 'USD'}}</div>
+
+<!--Percentage-->
+<div>{{PercentageExample | percent : '2.1-2'}}</div>
+<div>{{PercentageExample | percent : '3.1-1'}}</div>
+
+___________________________________________________________________________________________________________________________________________________________________________
+
+<!--Chaining Pipes-->
+<div>{{DateExample | date | uppercase}}</div>
+<div>{{DateExample | date:'full' | uppercase}}</div>
+
+<router-outlet></router-outlet>
